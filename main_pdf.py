@@ -732,9 +732,51 @@ def render_styles() -> None:
         .result-title { margin:1.7rem 0 .75rem; font-size:1.15rem; font-weight:900; color:var(--ink); }
         .result-card { border:1px solid #f0dada; border-radius:12px; background:rgba(255,255,255,.92); padding:1.15rem 1.25rem; margin:.75rem 0; line-height:1.75; color:#34303a; }
         .result-meta { color:#8f8795; font-weight:700; font-size:.92rem; margin-bottom:.55rem; }
-        .template-title-text { min-height:2.2rem; color:#5f5867; font-weight:900; text-align:center; margin:.55rem 0; }
-        .template-thumb { width:100%; aspect-ratio:16/9; object-fit:cover; border:3px solid #f1d4d5; border-radius:10px; background:#fff; }
-        div[data-testid="stCheckbox"] { transform:translate(.4rem, 2.15rem); height:0; }
+        .template-title-text {
+            height:1.45rem;
+            line-height:1.45rem;
+            color:#5f5867;
+            font-weight:900;
+            text-align:center;
+            margin:.5rem 0 .35rem;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+        .template-thumb {
+            display:block;
+            width:100%;
+            aspect-ratio:16/9;
+            object-fit:cover;
+            border:3px solid #f1d4d5;
+            border-radius:10px;
+            background:#fff;
+        }
+        div[data-testid="stCheckbox"] {
+            position:relative;
+            z-index:10;
+            width:1.45rem;
+            height:0;
+            margin:0;
+            transform:translate(.55rem, 2.05rem);
+        }
+        div[data-testid="stCheckbox"] label {
+            width:1.45rem;
+            height:1.45rem;
+            min-height:1.45rem;
+            padding:0;
+            border-radius:999px;
+            background:transparent;
+        }
+        div[data-testid="stCheckbox"] label p { display:none; }
+        div[data-testid="stCheckbox"] [data-testid="stMarkdownContainer"] { display:none; }
+        div[data-testid="stCheckbox"] label > div:first-child {
+            width:1.28rem;
+            height:1.28rem;
+            border-radius:999px;
+            background:rgba(255,255,255,.08);
+            box-shadow:0 0 0 1.5px rgba(255,255,255,.98), 0 2px 8px rgba(0,0,0,.22);
+        }
         .working-line { display:flex; align-items:center; justify-content:center; gap:.55rem; width:100%; color:#ba1f24; font-weight:900; padding:.7rem 0; text-align:center; }
         .working-icon { width:1rem; height:1rem; border:3px solid #ffd2d3; border-top-color:#ba1f24; border-radius:999px; animation:infographic-spin .85s linear infinite; }
         @keyframes infographic-spin { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
