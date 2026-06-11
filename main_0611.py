@@ -91,7 +91,7 @@ if uploaded_file is not None:
     st.info( f"분할된 문서 개수 : {len(texts)}"    )
 
     embeddings = GoogleGenerativeAIEmbeddings(
-        model="models/text-embedding-004"
+        model="models/gemini-embedding-001"
     )
 
 
