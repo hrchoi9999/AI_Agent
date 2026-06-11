@@ -7,6 +7,10 @@ import os
 import tempfile
 import streamlit as st
 
+# ChromaDB's OpenTelemetry dependency can hit protobuf compatibility issues
+# on Streamlit Cloud Python 3.14. Set this before importing Chroma.
+os.environ.setdefault("PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION", "python")
+
 # PDF Loader
 from langchain_community.document_loaders import PyPDFLoader
 
