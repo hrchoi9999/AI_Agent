@@ -727,14 +727,30 @@ def render_styles() -> None:
         .hero { text-align:center; margin:.5rem auto 2.15rem; }
         .hero h1 { color:#232027; font-size:clamp(2.1rem, 5vw, 3.4rem); line-height:1.1; font-weight:900; letter-spacing:0; margin:0; }
         .hero .blue { color:#2563df; }
-        div[data-testid="stPills"] button,
-        div[data-testid="stPills"] button p {
-            font-size:1.5rem !important;
-            line-height:1.18 !important;
-            font-weight:900 !important;
+        div[data-testid="stPills"],
+        div[data-testid="stButtonGroup"] {
+            display:flex !important;
+            justify-content:center !important;
+            gap:1.25rem !important;
         }
-        div[data-testid="stPills"] button {
-            padding:.48rem .85rem !important;
+        div[data-testid="stPills"] button,
+        div[data-testid="stButtonGroup"] button,
+        button[data-testid^="stBaseButton-pills"] {
+            min-height:3.25rem !important;
+            padding:.65rem 1.15rem !important;
+        }
+        div[data-testid="stPills"] button,
+        div[data-testid="stPills"] button *,
+        div[data-testid="stPills"] [role="radio"],
+        div[data-testid="stPills"] [role="radio"] *,
+        div[data-testid="stButtonGroup"] button,
+        div[data-testid="stButtonGroup"] button *,
+        button[data-testid^="stBaseButton-pills"],
+        button[data-testid^="stBaseButton-pills"] * {
+            font-size:1.5rem !important;
+            line-height:1.12 !important;
+            font-weight:900 !important;
+            letter-spacing:0 !important;
         }
         div[data-testid="stButton"] > button {
             background:linear-gradient(135deg, var(--red), #ff5a5f) !important;
