@@ -803,6 +803,14 @@ def render_styles() -> None:
             color:#34303a !important;
             font-size:.95rem !important;
         }
+        div[data-testid="stFileUploader"] svg,
+        div[data-testid="stFileUploader"] [data-testid="stIconMaterial"],
+        div[data-testid="stFileUploader"] [data-testid="stFileUploaderFile"] svg,
+        div[data-testid="stFileUploader"] [data-testid="stFileUploaderFile"] [data-testid="stIconMaterial"] {
+            color:#6f6976 !important;
+            fill:#6f6976 !important;
+            stroke:#6f6976 !important;
+        }
         div[data-testid="stVerticalBlockBorderWrapper"] { border-color:#ebe4f3; border-radius:18px; background:rgba(255,255,255,.94); box-shadow:0 24px 70px rgba(66,44,95,.10); }
         .question-label { font-size:1.2rem; font-weight:900; color:var(--ink); margin-bottom:.7rem; }
         .result-title { margin:1.7rem 0 .75rem; font-size:1.15rem; font-weight:900; color:var(--ink); }
