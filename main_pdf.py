@@ -727,6 +727,34 @@ def render_styles() -> None:
         .hero { text-align:center; margin:.5rem auto 2.15rem; }
         .hero h1 { color:#232027; font-size:clamp(2.1rem, 5vw, 3.4rem); line-height:1.1; font-weight:900; letter-spacing:0; margin:0; }
         .hero .blue { color:#2563df; }
+        div[data-testid="stPills"] button,
+        div[data-testid="stPills"] button p {
+            font-size:1.5rem !important;
+            line-height:1.18 !important;
+            font-weight:900 !important;
+        }
+        div[data-testid="stPills"] button {
+            padding:.48rem .85rem !important;
+        }
+        div[data-testid="stButton"] > button {
+            background:linear-gradient(135deg, var(--red), #ff5a5f) !important;
+            color:#fff !important;
+            border:1px solid rgba(224,48,48,.18) !important;
+            border-radius:12px !important;
+            font-weight:900 !important;
+            box-shadow:0 10px 24px rgba(224,48,48,.18) !important;
+        }
+        div[data-testid="stButton"] > button:hover {
+            background:linear-gradient(135deg, var(--red-dark), var(--red)) !important;
+            color:#fff !important;
+            border-color:rgba(186,31,36,.24) !important;
+        }
+        div[data-testid="stButton"] > button:disabled {
+            background:#f4c8ca !important;
+            color:#fff !important;
+            box-shadow:none !important;
+            opacity:.7 !important;
+        }
         div[data-testid="stVerticalBlockBorderWrapper"] { border-color:#ebe4f3; border-radius:18px; background:rgba(255,255,255,.94); box-shadow:0 24px 70px rgba(66,44,95,.10); }
         .question-label { font-size:1.2rem; font-weight:900; color:var(--ink); margin-bottom:.7rem; }
         .result-title { margin:1.7rem 0 .75rem; font-size:1.15rem; font-weight:900; color:var(--ink); }
