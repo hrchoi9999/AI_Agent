@@ -785,11 +785,17 @@ def render_styles() -> None:
             padding:1rem !important;
         }
         section[data-testid="stFileUploaderDropzone"] button {
-            background:linear-gradient(135deg, var(--red), #ff5a5f) !important;
-            color:#fff !important;
-            border:0 !important;
+            background:#f2f3f5 !important;
+            color:#4b4652 !important;
+            border:1px solid #d8dbe0 !important;
             border-radius:10px !important;
             font-weight:900 !important;
+            box-shadow:none !important;
+        }
+        section[data-testid="stFileUploaderDropzone"] button:hover {
+            background:#e9ebef !important;
+            color:#34303a !important;
+            border-color:#cfd3da !important;
         }
         section[data-testid="stFileUploaderDropzone"] div,
         section[data-testid="stFileUploaderDropzone"] span,
