@@ -755,6 +755,32 @@ def render_styles() -> None:
             box-shadow:none !important;
             opacity:.7 !important;
         }
+        section[data-testid="stFileUploader"] {
+            margin-bottom:.75rem;
+        }
+        section[data-testid="stFileUploaderDropzone"] {
+            min-height:142px;
+            border:1px solid #f0dada !important;
+            border-radius:12px !important;
+            background:rgba(255,255,255,.92) !important;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:1rem !important;
+        }
+        section[data-testid="stFileUploaderDropzone"] button {
+            background:linear-gradient(135deg, var(--red), #ff5a5f) !important;
+            color:#fff !important;
+            border:0 !important;
+            border-radius:10px !important;
+            font-weight:900 !important;
+        }
+        section[data-testid="stFileUploaderDropzone"] div,
+        section[data-testid="stFileUploaderDropzone"] span,
+        section[data-testid="stFileUploaderDropzone"] small {
+            color:#34303a !important;
+            font-size:.95rem !important;
+        }
         div[data-testid="stVerticalBlockBorderWrapper"] { border-color:#ebe4f3; border-radius:18px; background:rgba(255,255,255,.94); box-shadow:0 24px 70px rgba(66,44,95,.10); }
         .question-label { font-size:1.2rem; font-weight:900; color:var(--ink); margin-bottom:.7rem; }
         .result-title { margin:1.7rem 0 .75rem; font-size:1.15rem; font-weight:900; color:var(--ink); }
@@ -927,11 +953,12 @@ def render_tool_box() -> tuple[list[object], bool]:
         else:
             upload_column, question_column = st.columns([1, 1], gap="large")
             with upload_column:
+                st.markdown('<div class="question-label">PDF 문서를 업로드하세요</div>', unsafe_allow_html=True)
                 uploaded_files = st.file_uploader(
-                    "파일을 끌어다 놓거나 업로드",
+                    "PDF 파일",
                     type=["pdf"],
                     accept_multiple_files=True,
-                    label_visibility="visible",
+                    label_visibility="collapsed",
                 )
                 if uploaded_files and len(uploaded_files) > 5:
                     st.warning("PDF는 최대 5개까지만 분석합니다. 앞의 5개 파일만 사용합니다.")
