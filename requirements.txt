@@ -12,6 +12,7 @@ langchain-text-splitters==1.1.2
 langchain-openai==1.2.2
 chromadb==1.5.9
 pydantic==2.13.4
+protobuf==3.20.3
 requests==2.34.2
 youtube-transcript-api==1.2.4
 starlette==1.2.1
