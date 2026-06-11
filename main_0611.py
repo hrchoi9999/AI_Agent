@@ -21,8 +21,8 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 
 
-# OpenAI 모델
-from langchain_openai import ( OpenAIEmbeddings,   ChatOpenAI )
+# Gemini 모델
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 
 # Prompt
 from langchain_core.prompts import (  ChatPromptTemplate )
@@ -33,6 +33,25 @@ st.write("----------------")
 
 uploaded_file = st.file_uploader(   "PDF 파일을 선택하세요",    type=["pdf"] )
 st.write("----------------")
+
+
+def load_gemini_api_key():
+    if os.getenv("GEMINI_API_KEY"):
+        os.environ.setdefault("GOOGLE_API_KEY", os.getenv("GEMINI_API_KEY", ""))
+        return True
+
+    try:
+        api_key = st.secrets.get("GEMINI_API_KEY")
+    except Exception:
+        api_key = None
+
+    if api_key:
+        os.environ["GEMINI_API_KEY"] = str(api_key)
+        os.environ["GOOGLE_API_KEY"] = str(api_key)
+        return True
+
+    return False
+
 
 def pdf_to_document(uploaded_file):
     temp_dir = tempfile.TemporaryDirectory()
@@ -56,6 +75,10 @@ def format_documents(documents):
     return "\n\n".join(context_parts)
 
 if uploaded_file is not None:
+    if not load_gemini_api_key():
+        st.error("GEMINI_API_KEY가 설정되어 있지 않습니다. Streamlit Cloud의 App settings > Secrets에 GEMINI_API_KEY를 등록해 주세요.")
+        st.stop()
+
     pages = pdf_to_document(  uploaded_file   )
     st.success(  f"PDF 로딩 완료 : {len(pages)} 페이지"   )
 
@@ -67,7 +90,9 @@ if uploaded_file is not None:
     texts = text_splitter.split_documents( pages  )
     st.info( f"분할된 문서 개수 : {len(texts)}"    )
 
-    embeddings = OpenAIEmbeddings()
+    embeddings = GoogleGenerativeAIEmbeddings(
+        model="models/text-embedding-004"
+    )
 
 
 
@@ -119,9 +144,9 @@ if uploaded_file is not None:
 
 
 
-                llm = ChatOpenAI(
+                llm = ChatGoogleGenerativeAI(
 
-                    model="gpt-4.1-mini",
+                    model="gemini-2.5-flash",
 
                     temperature=0
 
