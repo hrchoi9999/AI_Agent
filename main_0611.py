@@ -22,6 +22,7 @@ from langchain_openai import ( OpenAIEmbeddings,   ChatOpenAI )
 
 # Prompt
 from langchain_core.prompts import (  ChatPromptTemplate )
+from langchain_core.runnables import RunnablePassthrough
 
 st.title("PDF File Reader")
 st.write("----------------")
@@ -141,13 +142,16 @@ if uploaded_file is not None:
                 )
 
 
-                context_documents = retriever.invoke(question)
-                context = format_documents(context_documents)
-                messages = prompt.format_messages(
-                    context=context,
-                    input=question
+                qa_chain = (
+                    {
+                        "context": retriever | format_documents,
+                        "input": RunnablePassthrough(),
+                    }
+                    | prompt
+                    | llm
                 )
-                response = llm.invoke(messages)
+
+                response = qa_chain.invoke(question)
 
 
 
